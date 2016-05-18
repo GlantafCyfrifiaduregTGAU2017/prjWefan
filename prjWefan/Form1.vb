@@ -8,15 +8,17 @@ Public Class Form1
     Private Sub btnArbed_Click(sender As Object, e As EventArgs) Handles btnArbed.Click
         Dim objStreamWriter As StreamWriter 'galluogi ysgrifennu at ffeil
         'Rhestr o dagiau i ychwanegu at y ffeil
-        Dim Tagiau() As String = {"<html>", "<head>", "</head>", "<body>", "</body>", "</html>"}
+        Dim Tagiau() As String = {"<html>", "<head>", "<title>", "</title>", "</head>", "<body>", "<h1>", "</h1>", "</body>", "</html>"}
         Dim Tag As String
 
         'Creu tudalen ar gyfer pob dynodwr yn y rhestr cmbTeitlauTudalennau
-
+        Dim Teitlau As String
         Dim TudalenNewydd As String
         'Ar gyfer pob tudalen yn y rhestr
 
         For Each TudalenNewydd In TudalenWe
+            'Teitl y tudalen
+            Teitlau = TudalenNewydd
             'Ychwanegu .html i'r newidyn ar gyfer dynodwr y dudalen
             TudalenNewydd = TudalenNewydd & ".html"
             MsgBox(TudalenNewydd)
@@ -26,6 +28,10 @@ Public Class Form1
 
             'Ar gyfer pob eitem yn y rhestr o dagiau
             For Each Tag In Tagiau
+                'Ychwanegu cynnwys
+                If (Tag = "</title>") Or (Tag = "</h1>") Then
+                    objStreamWriter.WriteLine(Teitlau)
+                End If
                 'Ysgrifennu'r data allan i'r ffel
                 objStreamWriter.WriteLine(Tag)
             Next

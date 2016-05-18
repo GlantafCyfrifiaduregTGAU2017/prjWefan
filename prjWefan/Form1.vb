@@ -32,6 +32,17 @@ Public Class Form1
                 If (Tag = "</title>") Or (Tag = "</h1>") Then
                     objStreamWriter.WriteLine(Teitlau)
                 End If
+                'Hypergysylltiadau
+                If Tag = "</body>" Then
+                    'Ychwanegu hypergysylltiadau
+                    For Each Hypergysylltiad In TudalenWe
+                        Dim Cyfeiriad As String 'Y daata i ychwanegu i'r dudalen """ ar gyfer nod osgoi y "
+                        Cyfeiriad = "<a href = """ & Hypergysylltiad & ".html""" & ">" & Hypergysylltiad & "</a>"
+                        MsgBox(Cyfeiriad)
+                        objStreamWriter.WriteLine(Cyfeiriad)
+                    Next
+
+                End If
                 'Ysgrifennu'r data allan i'r ffel
                 objStreamWriter.WriteLine(Tag)
             Next

@@ -7,6 +7,7 @@ Public Class Form1
         Dim Tagiau() As String = {"<html>", "<head>", "</head>", "<body>", "</body>", "</html>"}
         Dim Tag As String
 
+
         'creu sianel newydd i ysgrifennu at y ffeil data.txt
         objStreamWriter = New StreamWriter("templed.html")
         MsgBox(My.Computer.FileSystem.CurrentDirectory)
@@ -25,11 +26,16 @@ Public Class Form1
     Private Sub btnYchwaneguTeitlau_Click(sender As Object, e As EventArgs) Handles btnYchwaneguTeitlau.Click
         'Ychwanegu teitlau i'r rhestr
         Dim Teitl As String
-        'darllen y teitl
-        Teitl = cmbTeitlTudalennau.Text
-        'Ychwanegu at y rhestr
-        cmbTeitlTudalennau.Items.Add(Teitl)
-        'Clurio'r blwch testun
+        'darllen y teitl - dileu bylchau o flaen ac ar ol y dynodwr
+        Teitl = Trim(cmbTeitlTudalennau.Text)
+        'Prawf dilysu presenoldeb - osgoi ychwanegu eitem gwag i'r rhestr
+        If Teitl = "" Then 'dynodwr yn absennol
+            MsgBox("Dynodwr y dudalen yn absennol")
+        Else 'data yn bresennol
+            'Ychwanegu at y rhestr
+            cmbTeitlTudalennau.Items.Add(Teitl)
+            'Clurio'r blwch testun
+        End If
         cmbTeitlTudalennau.Text = ""
     End Sub
 End Class

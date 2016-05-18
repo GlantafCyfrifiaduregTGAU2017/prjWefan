@@ -28,6 +28,9 @@ Partial Class Form1
         Me.cmbTeitlTudalennau = New System.Windows.Forms.ComboBox()
         Me.wbArddangos = New System.Windows.Forms.WebBrowser()
         Me.btnArddangos = New System.Windows.Forms.Button()
+        Me.btnDewislleoliad = New System.Windows.Forms.Button()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.txtLleoliad = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'btnArbed
@@ -82,11 +85,29 @@ Partial Class Form1
         Me.btnArddangos.Text = "Arddangos"
         Me.btnArddangos.UseVisualStyleBackColor = True
         '
+        'btnDewislleoliad
+        '
+        Me.btnDewislleoliad.Location = New System.Drawing.Point(19, 13)
+        Me.btnDewislleoliad.Name = "btnDewislleoliad"
+        Me.btnDewislleoliad.Size = New System.Drawing.Size(86, 31)
+        Me.btnDewislleoliad.TabIndex = 7
+        Me.btnDewislleoliad.Text = "Dewis Lleoliad"
+        Me.btnDewislleoliad.UseVisualStyleBackColor = True
+        '
+        'txtLleoliad
+        '
+        Me.txtLleoliad.Location = New System.Drawing.Point(111, 12)
+        Me.txtLleoliad.Name = "txtLleoliad"
+        Me.txtLleoliad.Size = New System.Drawing.Size(410, 20)
+        Me.txtLleoliad.TabIndex = 8
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(868, 588)
+        Me.Controls.Add(Me.txtLleoliad)
+        Me.Controls.Add(Me.btnDewislleoliad)
         Me.Controls.Add(Me.btnArddangos)
         Me.Controls.Add(Me.wbArddangos)
         Me.Controls.Add(Me.cmbTeitlTudalennau)
@@ -105,5 +126,8 @@ Partial Class Form1
     Friend WithEvents cmbTeitlTudalennau As System.Windows.Forms.ComboBox
     Friend WithEvents wbArddangos As System.Windows.Forms.WebBrowser
     Friend WithEvents btnArddangos As System.Windows.Forms.Button
+    Friend WithEvents btnDewislleoliad As System.Windows.Forms.Button
+    Friend WithEvents SaveFileDialog1 As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents txtLleoliad As System.Windows.Forms.TextBox
 
 End Class

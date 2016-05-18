@@ -4,8 +4,12 @@ Public Class Form1
 
     'Rhestr o dudalennau we i greu 
     Dim TudalenWe As New ArrayList()
+    'Lleoliad y wefan
+    Dim LlwybrNewydd As String = ""
 
     Private Sub btnArbed_Click(sender As Object, e As EventArgs) Handles btnArbed.Click
+        'Creu ac arbed y wefan
+
         Dim objStreamWriter As StreamWriter 'galluogi ysgrifennu at ffeil
         'Rhestr o dagiau i ychwanegu at y ffeil
         Dim Tagiau() As String = {"<html>", "<head>", "<title>", "</title>", "</head>", "<body>", "<h1>", "</h1>", "</body>", "</html>"}
@@ -16,16 +20,18 @@ Public Class Form1
         Dim TudalenNewydd As String
         'Ar gyfer pob tudalen yn y rhestr
 
+        'Newid y cyfarwyddiadur i'r un sydd wedi cael ei greu
+        'Directory.SetCurrentDirectory(LlwybrNewydd)
+
         For Each TudalenNewydd In TudalenWe
             'Teitl y tudalen
             Teitlau = TudalenNewydd
             'Ychwanegu .html i'r newidyn ar gyfer dynodwr y dudalen
             TudalenNewydd = TudalenNewydd & ".html"
-            MsgBox(TudalenNewydd)
+           
             'creu sianel newydd i ysgrifennu at y ffeil data.txt
             objStreamWriter = New StreamWriter(TudalenNewydd)
-            MsgBox(My.Computer.FileSystem.CurrentDirectory)
-
+           
             'Ar gyfer pob eitem yn y rhestr o dagiau
             For Each Tag In Tagiau
                 'Ychwanegu cynnwys
@@ -38,7 +44,7 @@ Public Class Form1
                     For Each Hypergysylltiad In TudalenWe
                         Dim Cyfeiriad As String 'Y daata i ychwanegu i'r dudalen """ ar gyfer nod osgoi y "
                         Cyfeiriad = "<a href = """ & Hypergysylltiad & ".html""" & ">" & Hypergysylltiad & "</a>"
-                        MsgBox(Cyfeiriad)
+                        'Ysgrifennu'r cysylltiad i'r ffeil
                         objStreamWriter.WriteLine(Cyfeiriad)
                     Next
 
@@ -53,6 +59,8 @@ Public Class Form1
     End Sub
 
     Private Sub btnYchwaneguTeitlau_Click(sender As Object, e As EventArgs) Handles btnYchwaneguTeitlau.Click
+        MsgBox(LlwybrNewydd)
+
         'Ychwanegu teitlau i'r rhestr
         Dim Teitl As String
         'darllen y teitl - dileu bylchau o flaen ac ar ol y dynodwr
@@ -79,4 +87,19 @@ Public Class Form1
         'Arddangos yn y porrydd we
         wbArddangos.Navigate(Arddangos)
     End Sub
+
+    Private Sub btnDewislleoliad_Click(sender As Object, e As EventArgs) Handles btnDewislleoliad.Click
+        'Dewis lleoliad ar gyfer y wefan
+        Dim cyfeiriadurNewydd As String = ""
+        'Darllen y lleoliad
+        cyfeiriadurNewydd = txtLleoliad.Text
+
+        'Newid y llwybr
+        LlwybrNewydd = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, cyfeiriadurNewydd)
+        'Creu y cyfeiriadur
+        Directory.CreateDirectory(cyfeiriadurNewydd)
+        MsgBox("Wedi Creu")
+        Directory.SetCurrentDirectory(LlwybrNewydd)
+    End Sub
+
 End Class

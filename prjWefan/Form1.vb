@@ -58,4 +58,14 @@ Public Class Form1
             cmbTeitlTudalennau.Text = ""
         End If
     End Sub
+
+    Private Sub btnArddangos_Click(sender As Object, e As EventArgs) Handles btnArddangos.Click
+        'Arddangos y dudalen sy'n cael ei ddewis
+        Dim Arddangos As String
+        'Creu y llwybr cywir i leoliad y dudalen
+        Arddangos = My.Computer.FileSystem.CurrentDirectory & "\" & cmbTeitlTudalennau.Text & ".html"
+        MsgBox(Arddangos)
+        'Arddangos yn y porrydd we
+        wbArddangos.Navigate(Arddangos)
+    End Sub
 End Class
